@@ -1,0 +1,1 @@
+[{"uid":"99a26f9034a0acae","name":"checkAddNewAccount()","time":{"start":1780247619565,"stop":1780247630741,"duration":11176},"status":"passed","severity":"normal"},{"uid":"79c75756f70ad289","name":"checkAddNewContact()","time":{"start":1780247630953,"stop":1780247638241,"duration":7288},"status":"passed","severity":"normal"}]
