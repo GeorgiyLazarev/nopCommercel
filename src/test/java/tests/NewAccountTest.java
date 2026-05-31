@@ -20,7 +20,9 @@ public class NewAccountTest extends BaseTest {
         newAccountPage
                 .openPage()
                 .addNewAccount(account2)
+                .verifyCheckboxIsNotSelected(OPTED_OUT)
                 .clickCheckbox(OPTED_OUT)
+                .verifyCheckboxIsNotSelected(INVALID)
                 .clickCheckbox(INVALID)
                 .choiceOption(TYPE.toString(), INTEGRATOR)
                 .choiceOption(INDUSTRY.toString(), ENERGY)
