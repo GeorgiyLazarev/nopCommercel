@@ -1,6 +1,5 @@
 package tests;
 
-import dto.Account;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterEach;
@@ -27,6 +26,22 @@ public class BaseTest {
     public void setUp() throws IOException {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
+
+        // Проверяем, запущены ли тесты в GitHub Actions
+        boolean isCI = System.getenv("CI") != null && System.getenv("CI").equals("true");
+
+        if (isCI) {
+            // Настройки для GitHub Actions (headless режим)
+            options.addArguments("--headless=new");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--window-size=1920,1080");
+            options.addArguments("--disable-web-security");
+            options.addArguments("--allow-running-insecure-content");
+        }
+
         HashMap<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("credentials_enable_service", false);
         chromePrefs.put("profile.password_manager_enabled", false);
@@ -44,12 +59,13 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         newAccountPage = new NewAccountPage(driver);
         newContactPage = new NewContactPage(driver);
-        driver.manage().window().maximize();
     }
 
     @AfterEach()
-    @Description("Закрытие браузера браузера")
-    public void tearDawn() {
-        driver.quit();
+    @Description("Закрытие браузера")
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
