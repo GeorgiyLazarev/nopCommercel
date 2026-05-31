@@ -13,6 +13,9 @@ public abstract class BasePage {
     WebDriverWait wait;
     WebDriver driver;
 
+    protected String user = System.getProperty("user");
+    protected String password = System.getProperty("password");
+
     public final String BASE_URL_LOGIN = "https://demo.suiteondemand.com/index.php?module=Users&action=Login";
     public final String BASE_URL_ACCOUNT = "https://demo.suiteondemand.com/index.php?module=" +
             "Accounts&action=EditView&return_module=Accounts&return_action=DetailView";

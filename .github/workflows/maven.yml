@@ -17,6 +17,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      USER: ${{secrets.SD_USER}}
+      PASSWORD: ${{secrets.SD_PASSWORD}}
 
     steps:
       - uses: actions/checkout@v4
@@ -39,4 +42,4 @@ jobs:
           google-chrome --version
 
       - name: Run tests with Maven
-        run: mvn clean test
+        run: mvn clean -Duser=$user -Dpassword=$PASSWORD test

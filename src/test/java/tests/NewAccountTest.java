@@ -16,7 +16,7 @@ public class NewAccountTest extends BaseTest {
 
     @Test
     public void checkAddNewAccount() {
-        loginPage.authorization("will", "will");
+        loginPage.authorization();
         newAccountPage
                 .openPage()
                 .addNewAccount(account2)

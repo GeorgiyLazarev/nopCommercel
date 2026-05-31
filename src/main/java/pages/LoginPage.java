@@ -29,7 +29,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public void authorization(String user, String password) {
+    public void authorization() {
         openPage();
         driver.findElement(USERNAME).sendKeys(user);
         driver.findElement(PASSWORD).sendKeys(password);

@@ -15,7 +15,7 @@ public class NewContactTest extends BaseTest {
 
     @Test
     public void checkAddNewContact() {
-        loginPage.authorization("will", "will");
+        loginPage.authorization();
         newContactPage
                 .openPage()
                 .choiceOption("salutation", MR)
