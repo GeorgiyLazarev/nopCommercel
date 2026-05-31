@@ -42,4 +42,4 @@ jobs:
           google-chrome --version
 
       - name: Run tests with Maven
-        run: mvn clean -Duser=$user -Dpassword=$PASSWORD test
+        run: mvn clean test -Duser=$USER -Dpassword=$PASSWORD
